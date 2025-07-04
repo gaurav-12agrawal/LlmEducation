@@ -23,7 +23,15 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://llm-education-rtlg.vercel.app/"
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 app.use("/auth", authRoutes);
