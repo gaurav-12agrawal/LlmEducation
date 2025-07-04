@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,300;0,700;1,300;1,400;1,300;1,700&display=swap');
+
+.main {
+    display: flex;
+    height: 130px;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.first {
+    display: flex;
+    width: 30%;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5%;
+}
+
+.first_inside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3%;
+    width: 100%;
+    padding: 14px 14px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.second {
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.secondin {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.third {
+    display: flex;
+    width: 30%;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 5%;
+    gap: 10%;
+    transition: all 300ms ease-in;
+}
+
+.name {
+    font-size: 40px;
+    transition: all ease 300ms;
+}
+
+.logo {
+    height: 45px;
+    width: 70px;
+}
+
+.search {
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid;
+}
+
+.search_text {
+    font-size: 17px;
+}
+
+.search_icon {
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+}
+
+input:focus {
+    outline: none;
+}
+
+.nav_item {
+    transition: all ease 300ms;
+    font-weight: 300;
+}
+
+.nav_item:hover {
+    cursor: pointer;
+
+
+}
+
+.name:hover {
+    cursor: pointer;
+    color: #F0624F;
+}
+
+.burger {
+    display: none;
+}
+
+.secondin {
+    display: flex;
+}
+
+
+@media screen and (max-width:1050px) {
+    .first_inside {
+        padding: 14px 20px;
+
+    }
+}
+
+@media screen and (max-width:976px) {
+    .first {
+        display: none;
+    }
+
+    .second {
+        width: 70%;
+        justify-content: flex-start;
+        padding-left: 4%;
+    }
+
+    .third {
+        width: 30%;
+    }
+
+    .name {
+        font-size: 37px;
+    }
+
+    .logo {
+        height: 39px;
+        width: 60px;
+    }
+}
+
+@media screen and (max-width:600px) {
+
+    .main {
+        width: 100%;
+        flex-direction: column;
+        margin-top: 30px;
+        padding: 0;
+    }
+
+    .second {
+        width: 96%;
+        padding: 0% 2%;
+        margin: 0;
+    }
+
+    .secondin {
+        display: flex;
+        width: 80%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .burger {
+        width: 20%;
+        display: flex;
+        font-size: 40px;
+        justify-content: flex-end;
+    }
+
+    .burger:hover {
+        cursor: pointer;
+    }
+
+
+    .third {
+        flex-direction: column;
+        transform: translateY(-150%);
+        gap: 30px;
+        min-height: 150px;
+        background-color: white;
+        width: 100%;
+        padding: 0;
+    }
+
+    .name {
+        font-size: 33px;
+        transition: all ease 300ms;
+    }
+
+    .logo {
+        height: 35px;
+        width: 49px;
+    }
+
+}
+
+@media screen and (max-width:386px) {
+    .name {
+        font-size: 28px;
+    }
+
+}
+
+.special {
+    transform: translateY(0%);
+}
+
+.active {
+    color: #F0624F;
+}
