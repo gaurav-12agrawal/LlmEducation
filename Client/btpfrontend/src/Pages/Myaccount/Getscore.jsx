@@ -13,9 +13,10 @@ const GetScore = ({ unitId }) => {
     const fetchScore = async () => {
         setLoading(true);
         setError(null);
+        const apiUrl = process.env.REACT_APP_API_URL;
         try {
             console.log("this is user", userId)
-            const response = await axios.post(`http://localhost:3001/${unitId}/getAverage`, { "userId": userId });
+            const response = await axios.post(`${apiUrl}${unitId}/getAverage`, { "userId": userId });
             const averageScore = response.data.score;
             setScore(averageScore);
         } catch (err) {

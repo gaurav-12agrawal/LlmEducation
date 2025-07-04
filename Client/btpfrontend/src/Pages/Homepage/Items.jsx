@@ -4,10 +4,11 @@ import Subjectcard from "./Subjectcard.jsx";
 import { Link } from "react-router-dom"
 
 const Items = () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [data, setData] = useState([]);
     const getdata = async () => {
         try {
-            const res = await fetch('http://localhost:3001/', {
+            const res = await fetch(apiUrl, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             });

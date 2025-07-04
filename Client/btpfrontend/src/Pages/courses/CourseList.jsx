@@ -8,9 +8,10 @@ function CourseList(props) {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const title = queryParams.get('title');
+    const apiUrl = process.env.REACT_APP_API_URL;
     const getdata = async () => {
         try {
-            const res = await fetch(`http://localhost:3001/${subjectId}`, {
+            const res = await fetch(`${apiUrl}${subjectId}`, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             });

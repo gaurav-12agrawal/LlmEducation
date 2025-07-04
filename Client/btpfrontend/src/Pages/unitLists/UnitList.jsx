@@ -11,7 +11,8 @@ function UnitList() {
 
     const getdata = async () => {
         try {
-            const res = await fetch(`http://localhost:3001/${subjectId}/${courseId}`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const res = await fetch(`${apiUrl}${subjectId}/${courseId}`, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             });

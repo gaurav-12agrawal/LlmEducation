@@ -17,8 +17,9 @@ const DropdownComponent = () => {
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
+            const apiUrl = process.env.REACT_APP_API_URL;
             try {
-                const response = await axios.get('http://localhost:3001/subjectHeiarchy');
+                const response = await axios.get(`${apiUrl}subjectHeiarchy`);
                 setData(response.data.data || []);
             } catch (error) {
                 console.error('Error fetching data:', error);

@@ -21,7 +21,8 @@ const Quiz = () => {
     const getQuiz = async () => {
         try {
             setLoading(true);
-            const res = await fetch(`http://localhost:3001/users/${topicId}/getquiz`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const res = await fetch(`${apiUrl}users/${topicId}/getquiz`, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             });
@@ -44,7 +45,8 @@ const Quiz = () => {
     const getnewQuiz = async () => {
         try {
             setLoading(true);
-            const res = await fetch(`http://localhost:3001/users/${topicId}/addorupdatequiz`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const res = await fetch(`${apiUrl}${topicId}/addorupdatequiz`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
             });
@@ -80,7 +82,7 @@ const Quiz = () => {
         }
         try {
             setLoading(true);
-            const res = await fetch(`http://localhost:3001/users/${topicId}/verify`, {
+            const res = await fetch(`users/${topicId}/verify`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ user_id, selectedOptions, descriptiveAnswers })
@@ -136,7 +138,7 @@ const Quiz = () => {
             ) : (
                 <div className={Styles.container}>
                     <div className={Styles.score}>
-                        {score!==null && <p>You Scored - {score}%</p>}
+                        {score !== null && <p>You Scored - {score}%</p>}
                     </div>
                     {quizData && quizData?.mcq && quizData?.mcq.map((questionObj, index) => (
                         <div key={index} className={Styles.container_ques}>

@@ -6,7 +6,8 @@ function TopicList() {
     const [data, setData] = useState([]);
     const getdata = async () => {
         try {
-            const res = await fetch(`http://localhost:3001/${subjectId}/${courseId}/${topicId}`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const res = await fetch(`${apiUrl}${subjectId}/${courseId}/${topicId}`, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             });

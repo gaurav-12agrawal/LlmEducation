@@ -14,12 +14,13 @@ const Login = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  const apiUrl = process.env.REACT_APP_API_URL;
+  console.log(apiUrl)
   const handleSubmit = async (e) => {
     e.preventDefault();
     var res;
     try {
-      res = await fetch('http://localhost:3001/auth/login', {
+      res = await fetch(`${apiUrl}auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
