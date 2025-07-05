@@ -17,35 +17,39 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config();
 const app = express();
-
-
-const ALLOWED_ORIGIN = "https://llm-education-rtlg.vercel.app";
-
-// CORS middleware
-app.use(cors({
-  origin: ALLOWED_ORIGIN,
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
-
-// Manually set CORS headers (for safety — useful for OPTIONS/preflight or edge cases)
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", ALLOWED_ORIGIN);
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", "true");
-  next();
-});
-
-// Support preflight requests globally
-app.options('*', cors());
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
+
+const ALLOWED_ORIGIN = "https://llm-education-rtlg.vercel.app";
+
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (origin === ALLOWED_ORIGIN) {
+    res.header("Access-Control-Allow-Origin", origin);
+    res.header("Access-Control-Allow-Credentials", "true");
+  }
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization"
+  );
+  // Optionally include:
+  res.header("Access-Control-Max-Age", "7200");
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204); // Respond to preflight request
+  }
+  next();
+});
+
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 app.use("/auth", authRoutes);
