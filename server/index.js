@@ -22,7 +22,8 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'https://localhost:3000',
-    'https://llm-education-rtlg.vercel.app'
+    'https://llm-education-rtlg.vercel.app',
+    'https://llm-education.vercel.app' // <-- Add this line
   ],
   credentials: true,
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
