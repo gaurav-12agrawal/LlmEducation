@@ -22,15 +22,16 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'https://localhost:3000',
-    'https://llm-education-rtlg.vercel.app/'
+    'https://llm-education-rtlg.vercel.app'
   ],
   credentials: true,
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   allowedHeaders: [
-    'Access-control-allow-origin',
-    'Content-type',
+    'Access-Control-Allow-Origin',
+    'Content-Type',
     'Authorization'
   ]
-}))
+}));
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
