@@ -27,7 +27,7 @@ app.use(cors({
   origin: ["https://llm-education-rtlg.vercel.app/"],
   credentials: true,
   allowedHeaders: [
-    'Access-control-allow-origin',
+    'access-control-allow-origin',
     'Content-type',
     'Authorization'
   ]
