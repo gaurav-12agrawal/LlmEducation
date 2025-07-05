@@ -18,8 +18,6 @@ load_dotenv()
 
 app = Flask(__name__)
 
-
-
 @app.route('/receive_data', methods=['POST'])
 def receive_data():
     sentence_sets = request.json
@@ -363,4 +361,4 @@ def receive_for_improvement():
         return jsonify({"error": "An error occurred while processing progress."}), 500
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=5000)
