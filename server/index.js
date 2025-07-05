@@ -19,10 +19,14 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: ["https://llm-education-rtlg.vercel.app"],
+  origin: [
+    'http://localhost:3000',
+    'https://localhost:3000',
+    'https://llm-education-rtlg.vercel.app/'
+  ],
   credentials: true,
   allowedHeaders: [
-    'access-control-allow-origin',
+    'Access-control-allow-origin',
     'Content-type',
     'Authorization'
   ]
