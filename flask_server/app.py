@@ -229,6 +229,7 @@ def get_questions(retriever, summary, llm):
 
 
 def generate_quiz( topic_content):
+    print("using llm for quiz generation...")
     retriever = get_embedding_get_retriever()
     # Get summary of the topic content
     summary = get_summary(topic_content)
@@ -260,6 +261,7 @@ def generate_quiz( topic_content):
 def receive_quiz_topic():
     """Endpoint to receive a quiz topic and generate questions."""
     try:
+        print("Generating quiz for topic content...")
         topic = request.json.get("topicTitle", "")
         topic_content = request.json.get("topicContent", "")
         if not topic:
@@ -267,6 +269,7 @@ def receive_quiz_topic():
 
         # Generate the quiz
         quizArray = generate_quiz(topic_content)
+        print("function finished generating quiz")
         return jsonify(quizArray), 200
     except Exception as e:
         print(f"Error: {e}")
