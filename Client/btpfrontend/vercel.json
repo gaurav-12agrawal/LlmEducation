@@ -2,14 +2,18 @@
     "version": 2,
     "builds": [
         {
-            "src": "src/main.ts",
+            "src": "api/index.js",
             "use": "@vercel/node"
+        },
+        {
+            "src": "frontend/package.json",
+            "use": "@vercel/static-build"
         }
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "src/main.ts",
+            "src": "/api/(.*)",
+            "dest": "api/index.js",
             "methods": [
                 "GET",
                 "POST",
@@ -19,11 +23,15 @@
                 "OPTIONS"
             ],
             "headers": {
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": "https://llm-education-rtlg.vercel.app",
                 "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
                 "Access-Control-Allow-Headers": "Content-Type, Authorization",
                 "Access-Control-Allow-Credentials": "true"
             }
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/frontend/$1"
         }
     ]
 }
