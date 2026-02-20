@@ -46,7 +46,7 @@ const Quiz = () => {
         try {
             setLoading(true);
             const apiUrl = process.env.REACT_APP_API_URL;
-            const res = await fetch(`${apiUrl}${topicId}/addorupdatequiz`, {
+            const res = await fetch(`${apiUrl}users/${topicId}/addorupdatequiz`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
             });
@@ -82,7 +82,8 @@ const Quiz = () => {
         }
         try {
             setLoading(true);
-            const res = await fetch(`users/${topicId}/verify`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const res = await fetch(`${apiUrl}users/${topicId}/verify`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ user_id, selectedOptions, descriptiveAnswers })

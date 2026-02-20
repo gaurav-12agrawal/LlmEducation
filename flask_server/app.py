@@ -233,7 +233,7 @@ def generate_quiz( topic_content):
     retriever = get_embedding_get_retriever()
     # Get summary of the topic content
     summary = get_summary(topic_content)
-    llm = ChatGroq(model_name="llama3-8b-8192")
+    llm = ChatGroq(model_name="llama-3.1-8b-instant")
     mcq,desc=get_questions(retriever, summary, llm)
     def generate_quiz_array():
       quiz_array = {
